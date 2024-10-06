@@ -1,0 +1,72 @@
+<!-- Plant Doctor Section -->
+<div class="plantDoctor">
+    <h1>Your Personal Plant Doctor</h1>
+    <div class="upload">
+        <div class="upload-box">
+            <img src="src/crop.jpg" alt="Upload Icon">
+            <p>Click/Upload Photo</p>
+        </div>
+        <div class="image-gallery">
+            <img src="src/img1.jpg" alt="Plant Image 1">
+            <img src="src/img2.jpg" alt="Plant Image 2">
+            <img src="src/img3.jpg" alt="Plant Image 3">
+            <img src="src/img4.jpg" alt="Plant Image 4">
+        </div>
+    </div>
+</div>
+
+<style>
+    .plantDoctor {
+        text-align: center;
+        margin: 40px 0; /* Adds margin for spacing */
+    }
+
+    .plantDoctor h1 {
+        font-size: 24px; /* Adjust font size for heading */
+        margin-bottom: 20px; /* Space below heading */
+        color: rgb(2, 2, 18); /* Text color */
+    }
+
+    .upload {
+        display: flex; /* Align items horizontally */
+        justify-content: center;
+        align-items: center; /* Center vertically */
+        gap: 20px; /* Space between dashed box and images */
+    }
+
+    .upload-box {
+        width: 200px; /* Increased width for upload box */
+        height: 200px; /* Increased height for upload box */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Center content */
+        border: 2px dashed rgb(2, 2, 18); /* Dashed border for upload box */
+        overflow: hidden; /* Hide overflow for images */
+    }
+
+    .upload img {
+        max-width: 70%; /* Responsive image size for upload icon */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .upload p {
+        margin-top: 5px; /* Space above text */
+        color: rgb(2, 2, 18); /* Text color */
+        font-size: 14px; /* Text size */
+        text-align: center; /* Center text */
+    }
+
+    .image-gallery {
+        display: flex;
+        gap: 10px; /* Space between images */
+    }
+
+    .image-gallery img {
+        width: 150px; /* Set width for gallery images */
+        height: 150px; /* Set height for gallery images */
+        object-fit: cover; /* Maintain aspect ratio and fill the box */
+        border: 2px solid rgb(2, 2, 18); /* Optional border around images */
+        border-radius: 5px; /* Optional rounded corners for images */
+    }
+</style>

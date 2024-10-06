@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Community</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+        }
+        header {
+            background-color: #1e88e5; /* Blue header */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 30px;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+        }
+        nav {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: #1e88e5; /* Blue sidebar */
+            width: 250px;
+            height: 100vh;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            padding-top: 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            padding: 15px;
+            text-align: center;
+            color: white;
+            transition: background 0.3s;
+        }
+        nav ul li:hover {
+            background-color: #1565c0; /* Darker blue */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            left: 0; /* Prevents container from being pushed */
+        }
+        h2 {
+            color: #1e88e5;
+            border-bottom: 2px solid #1e88e5; /* Underline header */
+            padding-bottom: 5px;
+        }
+        .post-section, .chat-section, .settings-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .post-input, .chat-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .post-button, .chat-button {
+            background-color: #1e88e5; /* Blue */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .post-button:hover, .chat-button:hover {
+            background-color: #1565c0; /* Darker blue */
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #1e88e5; /* Blue */
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .chat-message {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .chat-message:last-child {
+            border-bottom: none;
+        }
+        .icon {
+            margin-right: 10px;
+            color: #1e88e5; /* Blue for icons */
+        }
+        /* Comment Section */
+        .comment-section {
+            margin-top: 10px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .comment-button {
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .comment-button:hover {
+            background-color: #1565c0; /* Darker blue */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    <h1>Farmer Community</h1>
+</header>
+
+<nav id="navMenu">
+    <ul>
+        <li onclick="showSection('post')"><i class="fas fa-newspaper icon"></i>Post News</li>
+        <li onclick="showSection('chat')"><i class="fas fa-comments icon"></i>Chat</li>
+        <li onclick="showSection('settings')"><i class="fas fa-cog icon"></i>Settings</li>
+        <li onclick="showSection('news')"><i class="fas fa-bullhorn icon"></i>See News</li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div id="post" class="post-section">
+        <h2>Post News</h2>
+        <textarea class="post-input" rows="4" placeholder="What's on your mind? (Add photos or videos too!)"></textarea>
+        <input type="file" accept="image/*" />
+        <button class="post-button">Post</button>
+        <div>
+            <h3>Recent Posts:</h3>
+            <div>
+                <p><strong>User A:</strong> Just harvested my first crop of tomatoes! 🍅</p>
+                <div class="comment-section">
+                    <input type="text" class="comment-input" placeholder="Add a comment..." />
+                    <button class="comment-button">Comment</button>
+                </div>
+            </div>
+            <div>
+                <p><strong>User B:</strong> Can anyone recommend pest control methods for corn? 🌽</p>
+                <div class="comment-section">
+                    <input type="text" class="comment-input" placeholder="Add a comment..." />
+                    <button class="comment-button">Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat" class="chat-section" style="display: none;">
+        <h2>Chat</h2>
+        <div class="chat-message"><strong>User 1:</strong> Hello! How are the crops this season?</div>
+        <div class="chat-message"><strong>User 2:</strong> They are doing well, thanks for asking!</div>
+        <textarea class="chat-input" rows="3" placeholder="Type a message..."></textarea>
+        <button class="chat-button">Send</button>
+    </div>
+
+    <div id="settings" class="settings-section" style="display: none;">
+        <h2>Settings</h2>
+        <p>Change your profile settings here.</p>
+        <ul>
+            <li>Update Profile Picture</li>
+            <li>Change Password</li>
+            <li>Notification Settings</li>
+        </ul>
+    </div>
+
+    <div id="news" class="news-section" style="display: none;">
+        <h2>See News</h2>
+        <p>Latest updates and news will be displayed here.</p>
+        <div>
+            <h3>Latest News:</h3>
+            <p><strong>Government Initiative:</strong> New subsidies for organic farming announced!</p>
+            <p><strong>Weather Alert:</strong> Heavy rains expected this week. Prepare your fields!</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Farmer Community - All Rights Reserved</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+    }
+
+    function showSection(section) {
+        const sections = ['post', 'chat', 'settings', 'news'];
+        sections.forEach(sec => {
+            document.getElementById(sec).style.display = (sec === section) ? 'block' : 'none';
+        });
+        document.getElementById('navMenu').style.display = 'none'; // Hide menu after selection
+    }
+</script>
+
+</body>
+</html>
